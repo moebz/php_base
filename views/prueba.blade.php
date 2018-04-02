@@ -1,0 +1,1 @@
+hello from blade {{ $unaVariable }}
