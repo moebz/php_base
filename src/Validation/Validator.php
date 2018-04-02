@@ -24,46 +24,39 @@ class Validator
             // print_r($value);
             // echo "<br><br>";
 
-            if ( isset($_REQUEST[$name]) ) {
+            // print_r($_REQUEST[$name]);
+            // echo "<br><br>";
 
-                // print_r($_REQUEST[$name]);
-                // echo "<br><br>";
+            $exploded = explode(":", $value);
 
-                $exploded = explode(":", $value);
+            // print_r($exploded);
+            // echo "<br><br>";
 
-                // print_r($exploded);
-                // echo "<br><br>";
+            // exit();
 
-                // exit();
+            switch ($exploded[0]) { //el primer valor siempre va a estar cargado
+                case 'min':
+                    $min = $exploded[1];
+                    if (Valid::stringType()->length($min)->Validate($_REQUEST[$name]) == false) {
+                        $errors[] = $name . " must be at least " . $min . " characters long!";
+                    }
+                    break;
 
-                switch ($exploded[0]) { //el primer valor siempre va a estar cargado
-                    case 'min':
-                        $min = $exploded[1];
-                        if (Valid::stringType()->length($min)->Validate($_REQUEST[$name]) == false) {
-                            $errors[] = $name . " must be at least " . $min . " characters long!";
-                        }
-                        break;
+                case 'email':
+                    if (Valid::email()->Validate($_REQUEST[$name]) == false) {
+                        $errors[] = $name . " must be a valid email!";
+                    }
+                    break;
 
-                    case 'email':
-                        if (Valid::email()->Validate($_REQUEST[$name]) == false) {
-                            $errors[] = $name . " must be a valid email!";
-                        }
-                        break;
+                case 'equalTo':
+                    if ( Valid::equals($_REQUEST[$name])->Validate($_REQUEST[$exploded[1]])==false ) {
+                        $errors[] = "$_REQUEST[$name] does not match verification value";
+                    }
+                    break;
 
-                    case 'equalTo':
-                        if ( Valid::equals($_REQUEST[$name])->Validate($_REQUEST[$exploded[1]])==false ) {
-                            $errors[] = "$_REQUEST[$name] does not match verification value";
-                        }
-                        break;
-
-                    default:
-                        // do nothing
-                }
-
-            } else {
-                $errors[] = "No value found!";
+                default:
+                    $errors[] = "No value found!";
             }
-
         }
 
         return $errors;
