@@ -4,9 +4,6 @@
     Acme: Register
 @stop
 
-@section('css')
-@stop
-
 @section('content')
 <h1>Register</h1>
 
