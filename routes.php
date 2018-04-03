@@ -41,3 +41,5 @@ $router->map('GET', '/registerform', 'Acme\controllers\RegisterController@regist
 $router->map('GET', '/login', 'Acme\controllers\RegisterController@getShowLoginPage', 'login');
 
 $router->map('POST', '/register', 'Acme\controllers\RegisterController@register', 'register');
+
+$router->map('GET', '/about', 'Acme\controllers\PageController@getShowPage', 'generic_page');

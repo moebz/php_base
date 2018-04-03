@@ -12,7 +12,8 @@
         "illuminate/database": "5.5.*",
         "altorouter/altorouter": "1.1.0",
         "respect/validation": "^1.1",
-        "duncan3dc/blade": "4.1.*"
+        "duncan3dc/blade": "4.1.*",
+        "robmorgan/phinx": "^0.9.2"
     },
     "autoload": {
         "psr-4" : { "Acme\\" : "src/" }
