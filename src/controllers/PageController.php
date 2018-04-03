@@ -10,4 +10,11 @@ class PageController extends BaseController {
         
     }
 
+    public function getShowPage()
+    {
+
+        echo "foo!";
+
+    }
+
 }
