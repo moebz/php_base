@@ -42,4 +42,21 @@ $router->map('GET', '/login', 'Acme\controllers\RegisterController@getShowLoginP
 
 $router->map('POST', '/register', 'Acme\controllers\RegisterController@register', 'register');
 
-$router->map('GET', '/about', 'Acme\controllers\PageController@getShowPage', 'generic_page');
+// prueba de slugify
+// $router->map('GET', '/slug', function(){
+//     $slug = new Cocur\Slugify\Slugify();
+//     echo $slug->slugify('About Acme');
+// });
+
+$router->map('GET', '/[*]', 'Acme\controllers\PageController@getShowPage', 'generic_page');
+
+// $router->map('GET', '/test', function(){
+
+//     $user = Acme\models\User::find(1);
+//     $testimonials = $user->testimonials()->get();
+    
+//     echo $user->first_name;
+//     echo "<br>";
+//     print_r($testimonials);
+
+// });

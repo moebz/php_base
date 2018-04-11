@@ -7,8 +7,9 @@ class Testimonial extends Eloquent
 
     //public $timestamps = false;
 
-   /*public function testimonials()
-    {
-        return $this->hasMany('Acme\models\Testimonial');
-    }*/
+    // public function user()
+    // {
+    //     return $this->hasOne('Acme\models\User');
+    // }
+    
 }

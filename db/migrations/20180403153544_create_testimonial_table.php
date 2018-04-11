@@ -8,8 +8,8 @@ class CreateTestimonialTable extends AbstractMigration
     public function up ()
     {
 
-        $users = $this->table('testimonials');
-        $users->addColumn('title', 'string')
+        $testimonials = $this->table('testimonials');
+        $testimonials->addColumn('title', 'string')
         ->addColumn('testimonial', 'text')
         ->addColumn('user_id', 'integer')
         ->addForeignKey('user_id', 'users', 'id', ['delete' => 'cascade', 'update' => 'cascade'])
@@ -22,7 +22,7 @@ class CreateTestimonialTable extends AbstractMigration
     public function down ()
     {
         
-        $this->dropTable('testimonials');
+        //$this->dropTable('testimonials');
 
     }
 }

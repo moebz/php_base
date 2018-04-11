@@ -20,7 +20,7 @@ class CreatePagesTable extends AbstractMigration
     public function down ()
     {
         
-        $this->dropTable('pages');
+        //$this->dropTable('pages');
 
     }
 }
