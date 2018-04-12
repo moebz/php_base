@@ -31,6 +31,8 @@ class RegisterController extends BaseController {
 
         echo "Posted!";*/
 
+        //dd($_REQUEST);
+
         $validationData = array(
             "first_name" => "min:3",
             "last_name" => "min:3",
@@ -65,7 +67,10 @@ class RegisterController extends BaseController {
         $user->password = password_hash( $_REQUEST['password'], PASSWORD_DEFAULT );
         $user->save();
 
-        echo "Posted!";
+        //echo "Posted!";
+
+        header("Location: /success");
+        exit();
 
     }
 

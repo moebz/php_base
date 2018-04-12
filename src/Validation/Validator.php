@@ -27,39 +27,48 @@ class Validator
             // print_r($_REQUEST[$name]);
             // echo "<br><br>";
 
-            $exploded = explode(":", $value);
+            $rules = explode("|", $value);
 
-            // print_r($exploded);
-            // echo "<br><br>";
+            foreach ( $rules as $rule ) {
 
-            // exit();
+                $exploded = explode(":", $rule);
 
-            switch ($exploded[0]) { //el primer valor siempre va a estar cargado
-                case 'min':
-                    $min = $exploded[1];
-                    if (Valid::stringType()->length($min)->Validate($_REQUEST[$name]) == false) {
-                        $errors[] = $name . " must be at least " . $min . " characters long!";
-                    }
-                    break;
+                // print_r($exploded);
+                // echo "<br><br>";
 
-                case 'email':
-                    if (Valid::email()->Validate($_REQUEST[$name]) == false) {
-                        $errors[] = $name . " must be a valid email!";
-                    }
-                    break;
+                // exit();               
 
-                case 'equalTo':
-                    if ( Valid::equals($_REQUEST[$name])->Validate($_REQUEST[$exploded[1]])==false ) {
-                        $errors[] = "$_REQUEST[$name] does not match verification value";
-                    }
-                    break;
+                switch ($exploded[0]) { //el primer valor siempre va a estar cargado
+                    case 'min':
+                        $min = $exploded[1];
+                        if (Valid::stringType()->length($min)->Validate($_REQUEST[$name]) == false) {
+                            $errors[] = $name . " must be at least " . $min . " characters long!";
+                        }
+                        break;
 
-                default:
-                    $errors[] = "No value found!";
-            }
-        }
+                    case 'email':
+                        if (Valid::email()->Validate($_REQUEST[$name]) == false) {
+                            $errors[] = $name . " must be a valid email!";
+                        }
+                        break;
+
+                    case 'equalTo':
+                        if ( Valid::equals($_REQUEST[$name])->Validate($_REQUEST[$exploded[1]])==false ) {
+                            $errors[] = "$_REQUEST[$name] does not match verification value";
+                        }
+                        break;
+
+                    default:
+                        dd($exploded);
+                        $errors[] = "No value found!";
+                }//endswitch
+
+            }//endforeach
+
+        }//endforeach
 
         return $errors;
 
-    }
+    }//endfunction
+
 }

@@ -23,7 +23,7 @@ class PageController extends BaseController {
         
         //dd($target);
 
-        // find matching page in the db
+        // find match ing page in the db
         $page = Page::where('slug', '=', $target)->get();
 
         //dd($page);
@@ -34,6 +34,17 @@ class PageController extends BaseController {
             $page_content = $item->page_content;
         }
 
+        if ( strlen($browser_title) == 0 ) {
+
+            //header("HTTP/1.0 404 Not Found");
+            header("$_SERVER[SERVER_PROTOCOL] 404 Not Found");
+            
+            //header("Location: /page-not-found");
+            echo $this->getShow404();
+            
+            die();
+        }
+         
         //pass content to some blade template
         echo $this->blade->render(
             'generic-page',
@@ -43,6 +54,11 @@ class PageController extends BaseController {
             ]
         );
 
+    }
+
+    public function getShow404()
+    {
+        echo $this->blade->render('page-not-found');
     }
 
 }

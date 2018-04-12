@@ -16,9 +16,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/registerform">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
+                @if(Acme\auth\LoggedIn::user())
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
