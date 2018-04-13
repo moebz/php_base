@@ -26,6 +26,11 @@ class AuthenticationController extends BaseController {
             if ( !password_verify($password, $user->password) ) {
                 $okay = false;
             }
+
+            if ($user->active == 0) {
+                $okay = false;
+            }
+
         } else {
             $okay = false;
         }
@@ -51,8 +56,8 @@ class AuthenticationController extends BaseController {
         exit();
     }
 
-    public function getTestUser() {
-        dd( LoggedIn::user() );
-    }
+    // public function getTestUser() {
+    //     dd( LoggedIn::user() );
+    // }
 
 }

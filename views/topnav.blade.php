@@ -18,6 +18,12 @@
                 </li>
                 @if(Acme\auth\LoggedIn::user())
                     <li class="nav-item">
+                        <a class="nav-link" href="/testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add-testimonial">Add a testimonial</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>
                     </li>
                 @else

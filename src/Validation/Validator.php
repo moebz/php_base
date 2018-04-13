@@ -39,6 +39,7 @@ class Validator
                 // exit();               
 
                 switch ($exploded[0]) { //el primer valor siempre va a estar cargado
+                    
                     case 'min':
                         $min = $exploded[1];
                         if (Valid::stringType()->length($min)->Validate($_REQUEST[$name]) == false) {
@@ -58,9 +59,19 @@ class Validator
                         }
                         break;
 
+                    case 'unique':
+                        $model = "Acme\\models\\" . $exploded[1];
+                        $table = new $model;
+                        $results = $table::where($name, '=', $_REQUEST[$name])->get();
+                        foreach ($results as $item) {
+                            $errors[] = $_REQUEST[$name] . " already exists in this system!";
+                        }
+                        break;
+
                     default:
                         dd($exploded);
                         $errors[] = "No value found!";
+
                 }//endswitch
 
             }//endforeach
