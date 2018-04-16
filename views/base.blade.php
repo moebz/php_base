@@ -23,25 +23,25 @@
         @yield('content')
 
     </div>
-
-    @section('footer')
-    <div class="row footer-background">
-        <div class="col-md-3">
-            <div class="pl-5">
-                <h4>Footer text</h4>
-                Footer text<br>
-                Footer text<br>
-                Footer text<br>
+    
+    <footer class="footer">
+        <div class="row footer-background">
+            <div class="col-md-3">
+                <div class="pl-5">
+                    <h4>Footer text</h4>
+                    Footer text<br>
+                    Footer text<br>
+                    Footer text<br>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-3">
+                <img src="/assets/map-small.png" class="float-right">
             </div>
         </div>
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-3">
-            <img src="/assets/map-small.png" class="float-right">
-        </div>
-    </div>
-    @stop
-
+    </footer>
+ 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
