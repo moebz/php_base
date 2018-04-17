@@ -16,6 +16,7 @@ class PageController extends BaseController {
 
         $browser_title = "";
         $page_content = "";
+        $page_id = 0;
 
         // extract page name from the url
         $uri = explode( "/", $_SERVER['REQUEST_URI'] );
@@ -32,6 +33,7 @@ class PageController extends BaseController {
         foreach ($page as $item) {
             $browser_title = $item->browser_title;
             $page_content = $item->page_content;
+            $page_id = $item->id;
         }
 
         if ( strlen($browser_title) == 0 ) {
@@ -50,7 +52,8 @@ class PageController extends BaseController {
             'generic-page',
             [
                 'browser_title' => $browser_title,
-                'page_content' => $page_content
+                'page_content' => $page_content,
+                'page_id' => $page_id
             ]
         );
 

@@ -40,14 +40,17 @@ $router->map('GET', '/logout', 'Acme\Controllers\AuthenticationController@getLog
 // $router->map('GET', '/testuser', 'Acme\Controllers\AuthenticationController@getTestUser', 'testuser');
 // $router->map('GET', '/login', 'Acme\controllers\RegisterController@getShowLoginPage', 'login');
 
-
 // $router->map('GET', '/testemail', function(){
-
 //     Acme\Email\SendEmail::sendEmail('john@here.com', 'My test subject', 'My message', 'somebody@unb.ca');
-
 //     //echo "Sent mail!";
-
 // });
+
+/* admin routes */
+if ( (Acme\Auth\LoggedIn::user()) && (Acme\Auth\LoggedIn::user()->access_level == 2) )
+{
+    $router->map('POST', '/admin/page/edit', 'Acme\Controllers\AdminController@postSavePage', 'save_page');
+    $router->map('GET', '/admin/page/add', 'Acme\Controllers\AdminController@getAddPage', 'add_page');
+}
 
 /* page routes */
 $router->map('GET', '/', 'Acme\controllers\PageController@getShowHomePage', 'home');
